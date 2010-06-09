@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Install scripting will go here!
+
+# TODO
+# Check for PHP, Ruby, Apache, MySql
+# Sudo
+# Propmt for Apache virtual host location
+# Install virtual hosts
+# Remind user to add vhosts path to httpd.conf
+# Install Ruby gems
+# Prompt for mysql info
+# Install sql database file
