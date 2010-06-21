@@ -2,7 +2,7 @@ require 'config'
 
 # Index
 get '/' do
-	haml :print
+	haml :devices
 end
 
 # SASS stylesheet

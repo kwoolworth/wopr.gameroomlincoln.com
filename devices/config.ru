@@ -1,5 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'print'
+require 'devices'
 
 run Sinatra::Application
