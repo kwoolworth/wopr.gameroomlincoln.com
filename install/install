@@ -2,59 +2,92 @@
 
 # http://linuxdevcenter.com/pub/a/linux/2003/09/18/ruby_csv.html?page=1
 
-# TODO
-# Sudo
-# Check installation environment
-# Prompt for path to install
-# Copy files to install path
-# Chmod file path
-# Prompt for domain
-# Prompt for whether to add domain to hosts
-# Propmt for Apache virtual host location
-# Create Apache virtual host file in virtual host location
-# Prompt for database connection information
-# Install SQL
-# Create database configuration file
-# Install Ruby gems
-# Remind user to restart Apache
-
-# Install script
-
 require 'getoptlong'
 
-version = "0.0.1"
+domain = "wopr.local"
+database = []
+database_install = false
+environment = "production"
+path = "./"
 
 def printusage(error_code)
-	print "\nW.O.P.R. Installer\n"
-	print "Usage: ./wopr\n"
+	print "\nW.O.P.R. (Wireless Operations Point-of-sale Response) Installer\n"
+	print "Usage: ./install [options] \n"
 	print "Options:\n"
-	print "-h, --help       Help\n"
-	print "-u, --usage      Usage\n"
-	print "-v, --version    Version\n\n"
+	print "-d, --database    Database configuration Ex: -d host=http://localhost,username=user,password=pass\n"
+	print "-o, --domain      Domain name for system Ex: -o example.com\n"
+	print "-e, --environment Environment (production|development) Ex: -e production\n"
+	print "-h, --help        Help\n"
+	print "-u, --usage       Usage\n"
 	exit(error_code)
 end
 
 opts = GetoptLong.new(
+	[ "--database",    "-d",   GetoptLong::REQUIRED_ARGUMENT ],
+	[ "--domain", 	   "-o",   GetoptLong::REQUIRED_ARGUMENT ],
+	[ "--environment", "-e",   GetoptLong::REQUIRED_ARGUMENT ],
 	[ "--help",		   "-h",   GetoptLong::NO_ARGUMENT ],
-	[ "--usage",	   "-u",   GetoptLong::NO_ARGUMENT ],
-	[ "--version",	   "-v",   GetoptLong::NO_ARGUMENT ]
+	[ "--usage",	   "-u",   GetoptLong::NO_ARGUMENT ]
 )
 
 begin
 	opts.each do |opt, arg|
 		case opt
+			when "--database"
+				arg.split(',').each do |darg|
+					darg_parts = darg.split('=')
+					if(darg_parts[0] == 'host' || darg_parts[0] == 'username' || darg_parts[0] == 'password')
+						database.push({darg_parts[0] => darg_parts[1]})
+					else
+						puts "Error: Syntax incorrect for database configuration.\n"
+						printusage(1)
+					end
+				end
+				database_install = true
+			when "--domain"
+				domain = arg
+			when "--environment"
+				if(arg == 'production' || arg == 'development')
+					environment = arg
+				else
+					puts "Error: Environment must be either 'production' or 'development'"
+					printusage(1)
+				end
 			when "--help"
 				printusage(0)
 			when "--usage"
 				printusage(0)
-			when "--version"
-				print "W.O.P.R. Installer | Version: ", version, "\n"
-				exit(0)
 		end
 	end
 	
-	# Logic goes here!
+	puts "\n"
 	
-rescue 
+	# Find base file path
+	puts "Determining installation base path..."
+	path = File.expand_path(File.join(File.expand_path(File.dirname(__FILE__)), '../'))
+	puts "Installation path: " + path
+	
+	# Chmod file paths
+	puts "CHMODing base path..."
+	if system('chmod -R 0777 ' + path + '/')
+		puts "Success!"
+	else
+		puts "Failed!"
+	end
+	
+	# Install Ruby gems
+	puts "Installing Ruby Gems..."
+
+	# Create Apache virtual host file in install tmp folder
+		#text = File.read(file_name)
+		#puts text.gsub(/search_regexp/, "replace string")
+	# Prompt for database connection information (Leave blank to skip)
+	# 	Install SQL
+	# 	Create database configuration file in database app folder
+	# Instruct user to install domain to /etc/hosts
+	# Instruct user to install virtual host file
+	# Instruct user to restart Apache
+	
+rescue
 	printusage(1)
 end
