@@ -1,13 +1,60 @@
-#!/bin/bash
+#!/usr/bin/ruby
 
-# Install scripting will go here!
+# http://linuxdevcenter.com/pub/a/linux/2003/09/18/ruby_csv.html?page=1
 
 # TODO
-# Check for PHP, Ruby, Apache, MySql
 # Sudo
+# Check installation environment
+# Prompt for path to install
+# Copy files to install path
+# Chmod file path
+# Prompt for domain
+# Prompt for whether to add domain to hosts
 # Propmt for Apache virtual host location
-# Install virtual hosts
-# Remind user to add vhosts path to httpd.conf
+# Create Apache virtual host file in virtual host location
+# Prompt for database connection information
+# Install SQL
+# Create database configuration file
 # Install Ruby gems
-# Prompt for mysql info
-# Install sql database file
+# Remind user to restart Apache
+
+# Install script
+
+require 'getoptlong'
+
+version = "0.0.1"
+
+def printusage(error_code)
+	print "\nW.O.P.R. Installer\n"
+	print "Usage: ./wopr\n"
+	print "Options:\n"
+	print "-h, --help       Help\n"
+	print "-u, --usage      Usage\n"
+	print "-v, --version    Version\n\n"
+	exit(error_code)
+end
+
+opts = GetoptLong.new(
+	[ "--help",		   "-h",   GetoptLong::NO_ARGUMENT ],
+	[ "--usage",	   "-u",   GetoptLong::NO_ARGUMENT ],
+	[ "--version",	   "-v",   GetoptLong::NO_ARGUMENT ]
+)
+
+begin
+	opts.each do |opt, arg|
+		case opt
+			when "--help"
+				printusage(0)
+			when "--usage"
+				printusage(0)
+			when "--version"
+				print "W.O.P.R. Installer | Version: ", version, "\n"
+				exit(0)
+		end
+	end
+	
+	# Logic goes here!
+	
+rescue 
+	printusage(1)
+end
