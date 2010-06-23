@@ -1,14 +1,12 @@
 #!/usr/bin/ruby
 
-# http://linuxdevcenter.com/pub/a/linux/2003/09/18/ruby_csv.html?page=1
-
 require 'getoptlong'
 require 'fileutils'
 
 apache_install = false
 apache_path = './'
 domain = "wopr.local"
-database = []
+database = {}
 database_install = false
 environment = "production"
 gems_install = false
@@ -48,7 +46,7 @@ begin
 				arg.split(',').each do |darg|
 					darg_parts = darg.split('=')
 					if(darg_parts[0] == 'host' || darg_parts[0] == 'username' || darg_parts[0] == 'password')
-						database.push({darg_parts[0] => darg_parts[1]})
+						database[darg_parts[0]] = darg_parts[1]
 					else
 						puts "Error: Syntax incorrect for database configuration.\n"
 						printusage(1)
@@ -78,7 +76,7 @@ begin
 	# Find base file path
 	puts "Determining installation base path..."
 	path = File.expand_path(File.join(File.expand_path(File.dirname(__FILE__)), '../'))
-	puts "Installation path: " + path
+	puts "Success!"
 	
 	# Chmod file paths
 	puts "CHMODing base path..."
@@ -144,15 +142,47 @@ begin
 		printusage(1)
 	end
 
-	# Prompt for database connection information (Leave blank to skip)
-	# 	Install SQL
-	# 	Create database configuration file in database app folder
-	
+	# Create and install database configuration file in database app folder
+	if(database_install)
+		puts "Creating PHP configuration file for MySQL..."
+		if File.exists?(File.join(path, 'install/templates/database.tpl'))
+		
+			if !File.directory?(File.join(path, 'database/inc'))
+				FileUtils.mkdir(File.join(path, 'database/inc'))
+			end
+		
+			database_template = File.open(File.join(path, 'install/templates/database.tpl'), "r").read
+			database_template = database_template.gsub!(/@:host@/, database['host']).gsub!(/@:username@/, database['username']).gsub!(/@:password@/, database['password'])
+			database_file = File.new(File.join(path, 'database/inc/database.php'), "w")
+		
+			if database_file.write(database_template) > 0
+				puts "Success!"
+			else
+				puts "Failed!"
+				puts "Error: Could not write data to database file."
+				printusage(1)
+			end
+		
+		else
+			puts "Failed!"
+			puts "Error: Could not locate database template."
+			printusage(1)
+		end
+	end
 	
 	# Instruct user to install domain to /etc/hosts
 	# Instruct user to install virtual host file
 	# Instruct user to restart Apache
+	puts "Installation Complete!\n\n"
+	puts "To finish the installation do the following:"
+	puts "  -- Install #{domain} to /etc/hosts file."
+	if(!apache_install)
+		puts "  -- Install Apache virtual host file to your Apache virtual host location."
+		puts "    $ cp -f #{path}/temp/wopr.conf /path/to/your/virtual/hosts/"
+	end
+	puts "  -- Install database using SQL from #{path}/install/sql/database.sql" 
+	puts "  -- Restart Apache\n\n"
 	
-#rescue
-#	printusage(1)
+rescue
+	printusage(1)
 end
