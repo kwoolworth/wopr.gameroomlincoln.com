@@ -1,12 +1,11 @@
 # Virtual host configuration
 
-NameVirtualHost @:domain@:80
-
-<VirtualHost @:domain@:80>
+<VirtualHost *:80>
 	
 	ServerName @:domain@
 	DocumentRoot @:path@/applications
 	RewriteEngine On
+	RewriteCond %{HTTP_HOST} ^@:domain@$ [NC]
 	RewriteRule ^/$ "/kiosk/" [R,NC,L]
 	RewriteRule ^/([^/\.]+)$ "/kiosk/$1" [R,NC,L]
 	RackEnv production

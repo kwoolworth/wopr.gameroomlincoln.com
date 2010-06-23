@@ -181,6 +181,7 @@ begin
 		puts "    $ cp -f #{path}/temp/wopr.conf /path/to/your/virtual/hosts/"
 	end
 	puts "  -- Install database using SQL from #{path}/install/sql/database.sql" 
+	puts "    $ mysql --user=username --password=password < #{path}/install/sql/database.sql"
 	puts "  -- Restart Apache\n\n"
 	
 rescue
