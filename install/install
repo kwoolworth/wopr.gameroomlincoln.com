@@ -3,29 +3,37 @@
 # http://linuxdevcenter.com/pub/a/linux/2003/09/18/ruby_csv.html?page=1
 
 require 'getoptlong'
+require 'fileutils'
 
+apache_install = false
+apache_path = './'
 domain = "wopr.local"
 database = []
 database_install = false
 environment = "production"
+gems_install = false
 path = "./"
 
 def printusage(error_code)
 	print "\nW.O.P.R. (Wireless Operations Point-of-sale Response) Installer\n"
 	print "Usage: ./install [options] \n"
 	print "Options:\n"
-	print "-d, --database    Database configuration Ex: -d host=http://localhost,username=user,password=pass\n"
-	print "-o, --domain      Domain name for system Ex: -o example.com\n"
-	print "-e, --environment Environment (production|development) Ex: -e production\n"
-	print "-h, --help        Help\n"
-	print "-u, --usage       Usage\n"
+	print "-a, --apache      Install virtual host to given Apache virtual host path. Ex: -a /path/to/apache/virtual/hosts"
+	print "-d, --database    Database configuration. Ex: -d host=http://localhost,username=user,password=pass\n"
+	print "-o, --domain      Domain name for system. Ex: -o example.com\n"
+	print "-e, --environment Environment. Options: (production|development) Ex: -e production\n"
+	print "-g, --gems        Install Ruby Gems.\n"
+	print "-h, --help        Help.\n"
+	print "-u, --usage       Usage.\n"
 	exit(error_code)
 end
 
 opts = GetoptLong.new(
+	[ "--apache",	   "-a",   GetoptLong::REQUIRED_ARGUMENT ],
 	[ "--database",    "-d",   GetoptLong::REQUIRED_ARGUMENT ],
 	[ "--domain", 	   "-o",   GetoptLong::REQUIRED_ARGUMENT ],
 	[ "--environment", "-e",   GetoptLong::REQUIRED_ARGUMENT ],
+	[ "--gems",		   "-g",   GetoptLong::NO_ARGUMENT ],
 	[ "--help",		   "-h",   GetoptLong::NO_ARGUMENT ],
 	[ "--usage",	   "-u",   GetoptLong::NO_ARGUMENT ]
 )
@@ -33,6 +41,9 @@ opts = GetoptLong.new(
 begin
 	opts.each do |opt, arg|
 		case opt
+			when "--apache"
+				apache_path = arg
+				apache_install = true
 			when "--database"
 				arg.split(',').each do |darg|
 					darg_parts = darg.split('=')
@@ -53,6 +64,8 @@ begin
 					puts "Error: Environment must be either 'production' or 'development'"
 					printusage(1)
 				end
+			when "--gems"
+				gems_install = true
 			when "--help"
 				printusage(0)
 			when "--usage"
@@ -76,18 +89,70 @@ begin
 	end
 	
 	# Install Ruby gems
-	puts "Installing Ruby Gems..."
+	if(gems_install)
+		puts "Installing Ruby Gems..."
+		if File.exists?(File.join(path, 'install/gems/manifest.gems'))
+			file = File.open(File.join(path, 'install/gems/manifest.gems'), "r")
+			file.each do |line|
+				system('gem install ' + line.gsub!(/[\n]+/, ''))
+			end
+			puts "Success!"
+		else
+			puts "Failed!"
+			puts "Error: Could not locate gems manifest."
+			printusage(1)
+		end
+	end
+	
+	# Create and install Apache virtual host
+	puts "Creating Apache virtual host file..."
+	if File.exists?(File.join(path, 'install/templates/virtual_hosts.tpl'))
+		
+		if !File.directory?(File.join(path, 'temp'))
+			FileUtils.mkdir(File.join(path, 'temp'))
+		end
+		
+		virtual_host_template = File.open(File.join(path, 'install/templates/virtual_hosts.tpl'), "r").read
+		virtual_host_template = virtual_host_template.gsub!(/@:domain@/, domain).gsub!(/@:path@/, path)
+		virtual_host_file = File.new(File.join(path, 'temp/wopr.conf'), "w")
+		
+		if virtual_host_file.write(virtual_host_template) > 0
+			
+			puts "Success!"
+			
+			if(apache_install)
+				puts "Installing Apache virtual host file..."
+				apache_virtual_host_file = File.new(File.join(apache_path, 'wopr.conf'), "w")
+				if apache_virtual_host_file.write(virtual_host_template) > 0
+					puts "Success!"
+				else
+					puts "Failed!"
+					puts "Error: Could not create virtual host file in given Apache virtual host location."
+					printusage(1)
+				end
+			end
+			
+		else
+			puts "Failed!"
+			puts "Error: Could not write data to virtual host file."
+			printusage(1)
+		end
+		
+	else
+		puts "Failed!"
+		puts "Error: Could not locate virtual host template."
+		printusage(1)
+	end
 
-	# Create Apache virtual host file in install tmp folder
-		#text = File.read(file_name)
-		#puts text.gsub(/search_regexp/, "replace string")
 	# Prompt for database connection information (Leave blank to skip)
 	# 	Install SQL
 	# 	Create database configuration file in database app folder
+	
+	
 	# Instruct user to install domain to /etc/hosts
 	# Instruct user to install virtual host file
 	# Instruct user to restart Apache
 	
-rescue
-	printusage(1)
+#rescue
+#	printusage(1)
 end

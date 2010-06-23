@@ -18,8 +18,8 @@ NameVirtualHost @:domain@:80
 		Allow from All
 	</Directory>
 	
-	Alias /database/ @:path@/public/
-	<Directory "@:path@/public/">
+	Alias /database/ @:path@/database/public/
+	<Directory "@:path@/database/public/">
 		PassengerEnabled Off
 		AllowOverride All
 		Order Allow,Deny
@@ -34,48 +34,48 @@ NameVirtualHost @:domain@:80
 	</Directory>
 	
 	RackBaseURI /devices
-	<Directory @:path@/devices>
+	<Directory @:path@/applications/devices>
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /inventory
-	<Directory @:path@/inventory>
+	<Directory @:path@/applications/inventory>
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /kiosk
-	<Directory @:path@/kiosk>
+	<Directory @:path@/applications/kiosk>
 		RackBaseURI /kiosk
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /repairs
-	<Directory @:path@/repairs>
+	<Directory @:path@/applications/repairs>
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /reports
-	<Directory @:path@/reports>
+	<Directory @:path@/applications/reports>
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /sales
-	<Directory @:path@/sales>
+	<Directory @:path@/applications/sales>
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /settings
-	<Directory @:path@/settings>
+	<Directory @:path@/applications/settings>
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /shared
-	<Directory @:path@/shared>
+	<Directory @:path@/applications/shared>
 		Options -MultiViews
 	</Directory>
 	
 	RackBaseURI /timeclock
-	<Directory @:path@/timeclock>
+	<Directory @:path@/applications/timeclock>
 		Options -MultiViews
 	</Directory>
 	
