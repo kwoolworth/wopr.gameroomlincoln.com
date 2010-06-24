@@ -913,6 +913,39 @@ CREATE  TABLE IF NOT EXISTS `wopr`.`inventory_stores_locations` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `wopr`.`applications`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `wopr`.`applications` (
+  `application_id` INT NOT NULL ,
+  `application_name` VARCHAR(45) NULL ,
+  `application_description` TINYTEXT NULL ,
+  PRIMARY KEY (`application_id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `wopr`.`user_applications`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `wopr`.`user_applications` (
+  `ua_user_id` INT NOT NULL ,
+  `ua_application_id` INT NOT NULL ,
+  PRIMARY KEY (`ua_user_id`, `ua_application_id`) ,
+  INDEX `ua_user_id` (`ua_user_id` ASC) ,
+  INDEX `ua_application_id` (`ua_application_id` ASC) ,
+  CONSTRAINT `ua_user_id`
+    FOREIGN KEY (`ua_user_id` )
+    REFERENCES `wopr`.`users` (`user_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `ua_application_id`
+    FOREIGN KEY (`ua_application_id` )
+    REFERENCES `wopr`.`applications` (`application_id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

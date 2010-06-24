@@ -8,6 +8,12 @@
 			
 		}
 		
+		public function echo($text){
+			
+			return $text;
+			
+		}
+		
 	}
 	
 ?>

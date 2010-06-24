@@ -11,7 +11,7 @@
 		'views_path' => 'views/',
 		'layout' => 'layouts/layout.php',
 	));
-		
+	
 	// Declare routes
 	$cycle->route('/','index');
 		function index($cycle) {
@@ -24,7 +24,7 @@
 			$server->setClass('WOPR_Example');
 			return $cycle->send($server->handle(), Cycle_Response::JSON);
 		}
-				
+	
 	// Run the application
 	$cycle->run();
 	
