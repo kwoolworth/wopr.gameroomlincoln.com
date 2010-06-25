@@ -17,7 +17,7 @@ def printusage(error_code)
 	print "Usage: ./install [options] \n"
 	print "Options:\n"
 	print "-a, --apache      Install virtual host to given Apache virtual host path. Ex: -a /path/to/apache/virtual/hosts"
-	print "-d, --database    Database configuration. Ex: -d host=http://localhost,username=user,password=pass\n"
+	print "-d, --database    Database configuration. Ex: -d host=localhost,username=user,password=pass\n"
 	print "-o, --domain      Domain name for system. Ex: -o example.com\n"
 	print "-e, --environment Environment. Options: (production|development) Ex: -e production\n"
 	print "-g, --gems        Install Ruby Gems.\n"

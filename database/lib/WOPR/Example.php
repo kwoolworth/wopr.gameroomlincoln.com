@@ -8,9 +8,10 @@
 			
 		}
 		
-		public function echo($text){
+		public function getUsers(){
 			
-			return $text;
+			$users = new WOPR_Users();
+			return $users->fetchAll()->toArray();
 			
 		}
 		
