@@ -25,6 +25,11 @@
 			return $cycle->send($server->handle(), Cycle_Response::JSON);
 		}
 	
+	$cycle->route('*', 'error');
+		function error($cycle) {
+			$cycle->response->redirect('/error/');
+		}
+		
 	// Run the application
 	$cycle->run();
 	

@@ -37,6 +37,11 @@
 		Options -MultiViews
 	</Directory>
 	
+	RackBaseURI /error
+	<Directory @:path@/applications/error>
+		Options -MultiViews
+	</Directory>
+	
 	RackBaseURI /inventory
 	<Directory @:path@/applications/inventory>
 		Options -MultiViews
@@ -68,8 +73,8 @@
 		Options -MultiViews
 	</Directory>
 	
-	RackBaseURI /shared
-	<Directory @:path@/applications/shared>
+	RackBaseURI /themes
+	<Directory @:path@/applications/themes>
 		Options -MultiViews
 	</Directory>
 	

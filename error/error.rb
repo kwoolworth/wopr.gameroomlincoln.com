@@ -2,7 +2,7 @@ require 'config'
 
 # Index
 get '/' do
-	haml :shared
+	haml :error
 end
 
 # SASS stylesheet

@@ -1,5 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'devices'
+require 'sales'
 
 run Sinatra::Application

@@ -11,6 +11,11 @@ get '/stylesheets/:name.css' do
 	sass :"#{params[:name]}", {:views => File.join(Sinatra::Application.root, 'stylesheets')}
 end
 
+# Redirect bad error paths to error application
+get '/error' do
+	redirect '/error/'
+end
+
 not_found do
-	'This is nowhere to be found'
+	redirect '/error/'
 end

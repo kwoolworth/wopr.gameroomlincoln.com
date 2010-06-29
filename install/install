@@ -89,8 +89,8 @@ begin
 	# Install Ruby gems
 	if(gems_install)
 		puts "Installing Ruby Gems..."
-		if File.exists?(File.join(path, 'install/gems/manifest.gems'))
-			file = File.open(File.join(path, 'install/gems/manifest.gems'), "r")
+		if File.exists?(File.join(path, 'install/gems/manifest'))
+			file = File.open(File.join(path, 'install/gems/manifest'), "r")
 			file.each do |line|
 				system('gem install ' + line.gsub!(/[\n]+/, ''))
 			end

@@ -1,5 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'shared'
+require 'themes'
 
 run Sinatra::Application

@@ -12,5 +12,5 @@ get '/stylesheets/:name.css' do
 end
 
 not_found do
-	'This is nowhere to be found'
+	redirect '/error/'
 end
