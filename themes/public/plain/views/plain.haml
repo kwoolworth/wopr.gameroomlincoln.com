@@ -1,0 +1,79 @@
+!!! Strict
+%html{:xmlns => 'http://www.w3.org/1999/xhtml', :lang => 'en'}
+	%head
+		%base{:href=>'/themes/'}
+		%meta{:"http-equiv" => 'Content-Type', :content => 'text/html; charset=utf-8'}
+		%meta{:"http-equiv" => 'Content-Script-Type', :content => 'text/javascript'}
+		%meta{:name => 'description', :content => 'Themes'}
+		%link{:rel => 'shortcut icon', :type => 'image/png', :href => 'plain/images/icon.png'}
+		%link{:rel => 'icon', :type => 'image/png', :href => 'plain/images/icon.png'}
+		%link{:rel => 'stylesheet', :href => 'plain/css', :title => 'Themes', :type => 'text/css'}
+		%title Plain
+	%body
+		%h1 Plain Theme
+		%hr
+		%p 
+			This is some paragraph text
+			%a{:href => '#'} This is a link
+		%br
+		%pre This is some pre data
+		%br
+		%span This is a span
+		%hr
+		%h1 Heading 1
+		%h2 Heading 2
+		%h3 Heading 3
+		%h4 Heading 4
+		%h5 Heading 5
+		%h6 Heading 6
+		%hr
+		%ul
+			%li List 1
+			%li List 2
+		%ol
+			%li List 1
+			%li List 2
+		%dl
+			%dt Title 1
+			%dd Definition 1
+		%hr
+			%img{:src => 'plain/images/icon.png', :alt => 'image'}
+		%hr
+		%table
+			%thead
+				%tr
+					%th Heading 1
+					%th Heading 2
+			%tfoot
+				%tr
+					%td Foot 1
+					%td Foot 2
+			%tbody
+				%tr
+					%td Body 1
+					%td Body 2
+		%hr
+		%form{:action => '#', :method => 'get'}
+			%fieldset
+				%label Field
+				%ul
+					%li
+						%label{:for => 'text'} Text
+						%input{:name => 'text', :type => 'text', :value => 'text'}
+					%li
+						%label{:for => 'radio'} Radio
+						%input{:name => 'radio', :type => 'radio', :value => 'radio'}
+					%li
+						%label{:for => 'checkbox'} Checkbox
+						%input{:name => 'checkbox', :type => 'checkbox', :value => 'checkbox'}
+					%li
+						%label{:for => 'select'} Select
+						%select{:name => 'select'}
+							%optgroup{:label => 'Option Group'}
+								%option{:value => 'option1'} Option 1
+					%li
+						%label{:for => 'textarea'} Textarea
+						%textarea{:name => 'textarea', :value => 'Textarea'}
+					%li
+						%input{:name => 'submit', :type => 'submit'}
+		%hr

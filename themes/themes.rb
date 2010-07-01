@@ -9,10 +9,17 @@ end
 get '/get' do
 	content_type :json
 	themes = []
+	default = JSON.parse(IO.readlines(File.join(Sinatra::Application.root, 'data/default.json'), 'r').to_s)
 	files = Dir.entries(File.join(Sinatra::Application.root, 'public'))
 	files.each do |file|
 		if File.exists?(File.join(Sinatra::Application.root, "public/#{file}/assets.json"))
-			themes.push(JSON.parse(IO.readlines(File.join(Sinatra::Application.root, "public/#{file}/assets.json"), 'r').to_s))
+			assets = JSON.parse(IO.readlines(File.join(Sinatra::Application.root, "public/#{file}/assets.json"), 'r').to_s)
+			if(assets['id'] == default['theme'])
+				assets[:default] = true
+			else
+				assets[:default] = false
+			end
+			themes.push(assets)
 		end
 	end
 	themes.to_json
@@ -31,8 +38,8 @@ get '/set/:theme' do
 	result.to_json
 end
 
-# Demos
-get '/:theme' do
+# Theme demos
+get '/:theme/demo' do
 	unless params[:theme] == 'default'
 		haml :"#{params[:theme]}", {:views => File.join(Sinatra::Application.root, "public/#{params[:theme]}/views")}
 	else
@@ -42,7 +49,7 @@ get '/:theme' do
 end
 
 # Theme stylesheets
-get '/:theme.css' do
+get '/:theme/css' do
 	content_type 'text/css', :charset => 'utf-8'
 	unless params[:theme] == 'default'
 		sass :"#{params[:theme]}", {:views => File.join(Sinatra::Application.root, "public/#{params[:theme]}/stylesheets")}
