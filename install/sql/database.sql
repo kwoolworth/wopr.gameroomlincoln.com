@@ -179,9 +179,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `wopr`.`persons_inventory_times`
+-- Table `wopr`.`persons_inventories_times`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `wopr`.`persons_inventory_times` (
+CREATE  TABLE IF NOT EXISTS `wopr`.`persons_inventories_times` (
   `pit_person_id` INT NOT NULL ,
   `pit_inventory_id` INT NOT NULL ,
   `pit_time_id` INT NOT NULL ,
@@ -309,9 +309,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `wopr`.`transactions_inventory`
+-- Table `wopr`.`transactions_inventories`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `wopr`.`transactions_inventory` (
+CREATE  TABLE IF NOT EXISTS `wopr`.`transactions_inventories` (
   `ti_transaction_id` INT NOT NULL ,
   `ti_inventory_id` INT NOT NULL ,
   PRIMARY KEY (`ti_transaction_id`, `ti_inventory_id`) ,
@@ -799,9 +799,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `wopr`.`inventory`
+-- Table `wopr`.`inventories`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `wopr`.`inventory` (
+CREATE  TABLE IF NOT EXISTS `wopr`.`inventories` (
   `inventory_id` INT NOT NULL AUTO_INCREMENT ,
   `inventory_piece_id` INT NOT NULL ,
   `inventory_location_id` INT NOT NULL ,
@@ -885,9 +885,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `wopr`.`inventory_stores_locations`
+-- Table `wopr`.`inventories_stores_locations`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `wopr`.`inventory_stores_locations` (
+CREATE  TABLE IF NOT EXISTS `wopr`.`inventories_stores_locations` (
   `isl_inventory_id` INT NOT NULL ,
   `isl_store_id` INT NOT NULL ,
   `isl_location_id` INT NOT NULL ,
@@ -897,7 +897,7 @@ CREATE  TABLE IF NOT EXISTS `wopr`.`inventory_stores_locations` (
   INDEX `isl_location_id` (`isl_location_id` ASC) ,
   CONSTRAINT `isl_inventory_id`
     FOREIGN KEY (`isl_inventory_id` )
-    REFERENCES `wopr`.`inventory` (`inventory_id` )
+    REFERENCES `wopr`.`inventories` (`inventory_id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `isl_store_id`
