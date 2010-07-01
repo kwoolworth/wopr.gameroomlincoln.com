@@ -106,13 +106,13 @@ begin
 	puts "Creating Apache virtual host file..."
 	if File.exists?(File.join(path, 'install/templates/virtual_hosts.tpl'))
 		
-		if !File.directory?(File.join(path, 'temp'))
-			FileUtils.mkdir(File.join(path, 'temp'))
+		if !File.directory?(File.join(path, 'install/temp'))
+			FileUtils.mkdir(File.join(path, 'install/temp'))
 		end
 		
 		virtual_host_template = File.open(File.join(path, 'install/templates/virtual_hosts.tpl'), "r").read
 		virtual_host_template = virtual_host_template.gsub!(/@:domain@/, domain).gsub!(/@:path@/, path)
-		virtual_host_file = File.new(File.join(path, 'temp/wopr.conf'), "w")
+		virtual_host_file = File.new(File.join(path, 'install/temp/wopr.conf'), "w")
 		
 		if virtual_host_file.write(virtual_host_template) > 0
 			
@@ -178,7 +178,7 @@ begin
 	puts "  -- Install #{domain} to /etc/hosts file."
 	if(!apache_install)
 		puts "  -- Install Apache virtual host file to your Apache virtual host location."
-		puts "    $ cp -f #{path}/temp/wopr.conf /path/to/your/virtual/hosts/"
+		puts "    $ cp -f #{path}/install/temp/wopr.conf /path/to/your/virtual/hosts/"
 	end
 	puts "  -- Install database using SQL from #{path}/install/sql/database.sql" 
 	puts "    $ mysql --user=username --password=password < #{path}/install/sql/database.sql"

@@ -1,3 +1,4 @@
 # Ignore file for wopr.gameroomlincoln.com
-temp/
+
+install/temp/
 database/inc/database.php
