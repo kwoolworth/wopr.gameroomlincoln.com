@@ -37,6 +37,14 @@
 						%li{:class => 'inactive'}
 							%a{:href => 'demo'} Menu 3
 					%hr
+					%ul{:class => 'breadcrumb'}
+						%li{:class => 'inactive'}
+							%a{:href => 'demo'} One
+						%li{:class => 'inactive'}
+							%a{:href => 'demo'} Two
+						%li{:class => 'active'}
+							%a{:href => 'demo'} Three
+					%hr
 					%p 
 						%a{:href => 'demo'} Lorem ipsum dolor sit amet, 
 						consectetur adipiscing elit. Duis augue risus, sollicitudin nec sollicitudin imperdiet, viverra vel tellus.
@@ -46,12 +54,10 @@
 						Quisque at varius quam. Maecenas molestie porta congue. Vivamus feugiat sapien sem. Nunc a felis at odio adipiscing vulputate.
 						Cras vel risus a urna vulputate elementum id id massa. Nullam eu tempor massa.
 					%pre
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue risus, sollicitudin nec sollicitudin imperdiet, viverra vel tellus.
-						Morbi vehicula, nunc vel posuere vehicula, lacus nulla accumsan elit, ut convallis tortor lacus ut lacus. Suspendisse potenti.
-						Praesent et eros at sapien convallis euismod eget a purus. Vivamus sed nisl massa, vitae faucibus risus.
-						In dolor felis, blandit eget luctus vitae, vulputate a leo. Aliquam leo sem, tincidunt a pulvinar ac, ornare rutrum urna.
-						Quisque at varius quam. Maecenas molestie porta congue. Vivamus feugiat sapien sem. Nunc a felis at odio adipiscing vulputate.
-						Cras vel risus a urna vulputate elementum id id massa. Nullam eu tempor massa.
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					%ul
+						%li List 1
+						%li List 2
 					%hr
 					%table
 						%thead
@@ -71,8 +77,30 @@
 								%td Item 1
 								%td Item 2
 								%td Item 3
-							%tr{:class => 'odd'}
-								%td Item 1
-								%td Item 2
-								%td Item 3
+					%hr
+					%form{:action => 'demo', :method => 'get'}
+						%fieldset
+							%legend Form 1
+							%ul
+								%li
+									%label{:for => 'text'} Text
+									%input{:id => 'text', :name => 'text', :type => 'text', :value => 'Lorem Ipsum'}
+								%li
+									%label{:for => 'textarea'} Textarea
+									%textarea{:id => 'textarea', :rows => '3', :cols => '10'} Lorem Ipsum
+								%li
+									%label{:for => 'select'} Select
+									%select{:id => 'select', :name => 'select'}
+										%optgroup{:label => 'Option Group'}
+											%option{:value => 'option1'} Option 1
+								%li
+									%label{:for => 'radio1'} Radio 1
+									%input{:id => 'radio1', :name => 'radio', :type => 'radio', :value => 'radio'}
+									%label{:for => 'radio2'} Radio 2
+									%input{:id => 'radio2', :name => 'radio', :type => 'radio', :value => 'radio'}
+								%li
+									%label{:for => 'checkbox'} Checkbox
+									%input{:id => 'checkbox', :name => 'checkbox', :type => 'checkbox', :value => 'checkbox'}
+								%li
+									%input{:id => 'submit', :name => 'submit', :type => 'submit'}
 					%hr

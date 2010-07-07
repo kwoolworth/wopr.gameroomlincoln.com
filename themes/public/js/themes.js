@@ -40,7 +40,6 @@ var themes = {
 			$('td.title a', new_row).html(theme.title)
 			$('td.title a', new_row).attr('href', '/themes/' + theme.id + '/demo');
 			$('td.description', new_row).html(theme.description);
-			$('td.image img', new_row).attr('src', theme.image);
 			$('td.default input:radio', new_row).attr('value', theme.id);
 			$('td.default input:radio', new_row).attr('checked', theme['default'] ? 'checked' : '');
 			$('table tbody').append(new_row);

@@ -7,12 +7,12 @@ $black: #141414
 $dark-gray: #212020
 $middle-gray: #363434
 $light_gray: #545151
-$white: #FCF3F3
+$white: #FDFDFD
 
 /* Tags*/
 #{headers(all)}
 	font-weight: bold
-	margin-bottom: 10px
+	margin: 0px 10px 10px 10px
 	
 h1
 	font-size: 22px
@@ -61,7 +61,7 @@ table
 	margin-bottom: 10px
 	border: 2px $black solid
 	border-collapse: collapse
-	@include alternating-rows-and-columns($white, $light-gray * 2, black, $black, $light-gray)
+	@include alternating-rows-and-columns($light-gray * 2, $white, black, $black, $light-gray)
 	
 	th, td
 		text-align: center
@@ -79,6 +79,43 @@ table
 			color: $white
 			background-color: $light-gray
 			text-align: right
+
+ul, ol
+	margin: 0px 10px 10px 10px
+
+form
+	margin: 0px 10px 10px 10px
+	
+	ul
+		margin: 0px
+		
+		li
+			margin-bottom: 10px
+			
+			label
+				display: block
+				margin-bottom: 5px
+				font-weight: bold
+				font-size: 16px
+				
+			input[type=text], textarea
+				padding: 3px 5px
+				border: 2px $black solid
+				font-size: 16px
+				
+				&:focus
+					border: 2px $light-gray solid
+					outline: none
+		
+	fieldset
+		border: 2px $black solid
+		padding: 10px
+	
+		legend
+			margin-left: 10px
+			padding: 3px 10px
+			font-size: 16px
+			font-weight: bold
 	
 /* Elements */
 ul.menu
@@ -112,6 +149,46 @@ ul.menu
 			background-color: $white
 			@include linear-gradient(color-stops($light-gray * 2, $light-gray))
 
+ul.breadcrumb
+	height: 26px
+	margin: 0px 10px 10px 10px
+	list-style-type: none
+		
+	li
+		display: inline
+		height: 26px
+		
+		&:first-child
+			a
+				@include border-top-left-radius()
+				@include border-bottom-left-radius()
+
+		&:last-child
+			a
+				@include border-top-right-radius()
+				@include border-bottom-right-radius()
+		
+		a
+			float: left
+			display: block
+			height: 20px
+			margin-right: 2px
+			padding: 3px 10px
+			line-height: 20px
+			text-decoration: none
+
+	li.active
+		a
+			color: $white
+			background-color: $middle-gray
+			@include linear-gradient(color-stops($middle-gray, $black))
+
+	li.inactive
+		a
+			color: $dark-gray
+			background-color: $white
+			@include linear-gradient(color-stops($light-gray * 2, $light-gray))
+			
 span.loading
 	padding: 0px 10px
 	
@@ -163,6 +240,7 @@ body
 			ul.tabs
 				float: left
 				width: 15%
+				margin: 0px
 				list-style-type: none
 				
 				li
