@@ -19,32 +19,34 @@
 			});
 		%title Themes
 	%body
-		%ul{:id => 'tabs'}
-			%li Themes
-		%div{:class => 'tab_content'}
-			%h1 Themes
-			%hr
-			%form{:action => '#', :method => 'post'}
-				%table
-					%thead
-						%tr
-							%th Title
-							%th Description
-							%th Image
-							%th Default
-					%tfoot
-						%tr
-							%td{:colspan => 4}
-								%span{:class => 'loading'} Loading...
-					%tbody
-						%tr
-							%td{:class => 'title'}
-							%td{:class => 'description'}
-							%td{:class => 'image'}
-								%img{:class => 'framed', :src => '', :alt => 'image'}
-							%td{:class => 'default'}
-								%input{:name => 'default', :type => 'radio', :value => ''}
-				%ul
-					%li
-						%input{:name => 'save', :type => 'submit', :value => 'Save'}
-			%hr
+		%div{:class => 'container'}
+			%div{:class => 'body'}
+				%ul{:class => 'tabs'}
+					%li{:class => 'active'}
+						%a{:href => '/themes/'}Themes
+				%div{:class => 'page'}
+					%h1 Themes
+					%hr
+					%form{:action => '#', :method => 'post'}
+						%table
+							%thead
+								%tr
+									%th Title
+									%th Description
+									%th Image
+									%th Default
+							%tfoot
+								%tr
+									%td{:colspan => 4}
+										%span{:class => 'loading'} Loading...
+										%input{:name => 'save', :type => 'submit', :value => 'Save'}
+							%tbody
+								%tr
+									%td{:class => 'title'}
+										%a{:href => '#'} Title
+									%td{:class => 'description'}
+									%td{:class => 'image'}
+										%img{:class => 'framed', :src => '', :alt => 'image'}
+									%td{:class => 'default'}
+										%input{:name => 'default', :type => 'radio', :value => ''}
+					%hr

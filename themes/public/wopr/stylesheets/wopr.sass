@@ -1,4 +1,206 @@
+/* Imports */
+@import "compass"
 @import "compass/reset"
 
+/* Colors */
+$black: #141414
+$dark-gray: #212020
+$middle-gray: #363434
+$light_gray: #545151
+$white: #FCF3F3
+
+/* Tags*/
+#{headers(all)}
+	font-weight: bold
+	margin-bottom: 10px
+	
+h1
+	font-size: 22px
+	
+h2
+	font-size: 20px
+	
+h3
+	font-size: 18px
+	
+h4
+	font-size: 16px
+	
+h5
+	font-size: 14px
+
+h6
+	font-size: 12px
+
+a
+	+link-colors($dark-gray, $middle-gray, $dark-gray, $middle-gray, $dark-gray)
+	
+hr
+	width: 100%
+	height: 5px
+	margin: 0px
+	margin-bottom: 10px
+	padding: 0px
+	border: none
+	@include border-radius(2px)
+	background-color: $middle-gray
+	@include linear-gradient(color-stops($light-gray, $middle-gray))
+	
+p
+	margin: 0px 10px 10px 10px
+	
+pre, code, samp, var
+	margin: 0px 10px 10px 10px
+	padding: 10px
+	border: 2px $black solid
+	background-color: $light-gray
+	color: $white
+	
+table
+	width: 100%
+	margin-bottom: 10px
+	border: 2px $black solid
+	border-collapse: collapse
+	@include alternating-rows-and-columns($white, $light-gray * 2, black, $black, $light-gray)
+	
+	th, td
+		text-align: center
+		padding: 3px 10px
+		border: 2px $black solid
+		
+	thead
+		th
+			color: $white
+			background-color: $black
+			font-weight: bold
+			
+	tfoot
+		td
+			color: $white
+			background-color: $light-gray
+			text-align: right
+	
+/* Elements */
+ul.menu
+	height: 26px
+	margin: 0px 5px 10px 5px
+	list-style-type: none
+	
+	li
+		display: inline
+		height: 26px
+		
+		a
+			float: left
+			display: block
+			height: 20px
+			margin: 0px 5px
+			padding: 3px 10px
+			line-height: 20px
+			text-decoration: none
+			@include border-radius(4px)
+	
+	li.active
+		a
+			color: $white
+			background-color: $middle-gray
+			@include linear-gradient(color-stops($middle-gray, $black))
+			
+	li.inactive
+		a
+			color: $dark-gray
+			background-color: $white
+			@include linear-gradient(color-stops($light-gray * 2, $light-gray))
+
+span.loading
+	padding: 0px 10px
+	
+/* Special Elements */
 body
-	background-color: red
+	color: $black
+	background-color: $black
+	background-image: url('/themes/wopr/images/background.png')
+	background-repeat: repeat
+	font-size: 14px
+	
+	div.container
+		padding: 0 1%
+		width: 98%
+		overflow: hidden
+		
+		div.header
+			position: relative
+			width: 100%
+			height: 110px
+			
+			h1.logo
+				width: 130px
+				height: 110px
+				margin: 0px
+				
+				a
+					display: block
+					width: 130px
+					height: 110px
+					background-image: url('/themes/wopr/images/logo.png')
+					background-repeat: no-repeat
+					text-indent: -9999px
+			
+			hr
+				position: absolute
+				top: 100px
+				margin: 0px
+				padding: 0px
+				width: 100%
+				height: 10px
+				border: none
+				@include border-radius(2px)
+				background-color: $middle-gray
+				@include linear-gradient(color-stops($light-gray, $middle-gray))
+				
+		div.body
+			
+			ul.tabs
+				float: left
+				width: 15%
+				list-style-type: none
+				
+				li
+					display: block
+					height: 50px
+					margin: 5px 0px
+					overflow: hidden
+				
+					a
+						display: block
+						height: 50px
+						padding: 0px 10px
+						line-height: 50px
+						text-align: right
+						text-decoration: none
+						@include border-top-left-radius()
+						@include border-bottom-left-radius()
+						+box-shadow($black)
+						
+				li.active
+					a
+						color: $black
+						background-color: $white
+						font-weight: bold
+					
+				li.inactive
+					a
+						color: $white
+						background-color: $middle-gray
+						@include linear-gradient(color-stops($light-gray, $middle-gray))
+						
+			div.page
+				float: left
+				width: 83%
+				padding: 1%
+				margin-bottom: 10px
+				background-color: $white
+				@include border-bottom-left-radius()
+				@include border-bottom-right-radius()
+				
+				

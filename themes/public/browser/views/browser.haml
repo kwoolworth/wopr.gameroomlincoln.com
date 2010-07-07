@@ -13,12 +13,13 @@
 		%h1 Browser
 		%hr
 		%p 
-			This is some paragraph text
-			%a{:href => '#'} This is a link
-		%br
-		%pre This is some pre data
-		%br
-		%span This is a span
+			Lorem Ipsum
+			%br
+			%a{:href => '#'} Link
+			%br
+			%span Span
+			%br
+		%pre Lorem Ipsum
 		%hr
 		%h1 Heading 1
 		%h2 Heading 2
@@ -37,7 +38,8 @@
 			%dt Title 1
 			%dd Definition 1
 		%hr
-			%img{:src => 'browser/images/icon.png', :alt => 'image'}
+		%p
+			%img{:src => 'plain/images/icon.png', :alt => 'image'}
 		%hr
 		%table
 			%thead
@@ -59,21 +61,21 @@
 				%ul
 					%li
 						%label{:for => 'text'} Text
-						%input{:name => 'text', :type => 'text', :value => 'text'}
+						%input{:id => 'text', :name => 'text', :type => 'text', :value => 'text'}
 					%li
 						%label{:for => 'radio'} Radio
-						%input{:name => 'radio', :type => 'radio', :value => 'radio'}
+						%input{:id => 'radio', :name => 'radio', :type => 'radio', :value => 'radio'}
 					%li
 						%label{:for => 'checkbox'} Checkbox
-						%input{:name => 'checkbox', :type => 'checkbox', :value => 'checkbox'}
+						%input{:id => 'checkbox', :name => 'checkbox', :type => 'checkbox', :value => 'checkbox'}
 					%li
 						%label{:for => 'select'} Select
-						%select{:name => 'select'}
+						%select{:id => 'select', :name => 'select'}
 							%optgroup{:label => 'Option Group'}
 								%option{:value => 'option1'} Option 1
 					%li
 						%label{:for => 'textarea'} Textarea
-						%textarea{:name => 'textarea', :value => 'Textarea'}
+						%textarea{:id => 'textarea', :name => 'textarea', :rows => '2', :cols => '2'} Lorem Ipsum
 					%li
 						%input{:name => 'submit', :type => 'submit'}
 		%hr

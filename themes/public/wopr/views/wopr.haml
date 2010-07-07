@@ -1,13 +1,78 @@
 !!! Strict
 %html{:xmlns => 'http://www.w3.org/1999/xhtml', :lang => 'en'}
 	%head
-		%base{:href=>'/themes/'}
+		%base{:href=>'/themes/wopr/'}
 		%meta{:"http-equiv" => 'Content-Type', :content => 'text/html; charset=utf-8'}
 		%meta{:"http-equiv" => 'Content-Script-Type', :content => 'text/javascript'}
 		%meta{:name => 'description', :content => 'Themes'}
-		%link{:rel => 'shortcut icon', :type => 'image/png', :href => 'wopr/images/icon.png'}
-		%link{:rel => 'icon', :type => 'image/png', :href => 'wopr/images/icon.png'}
-		%link{:rel => 'stylesheet', :href => 'wopr/css', :title => 'Themes', :type => 'text/css'}
+		%link{:rel => 'shortcut icon', :type => 'image/png', :href => 'images/icon.png'}
+		%link{:rel => 'icon', :type => 'image/png', :href => 'images/icon.png'}
+		%link{:rel => 'stylesheet', :href => 'css', :title => 'Themes', :type => 'text/css'}
 		%title W.O.P.R.
 	%body
-		%h1 W.O.P.R. Theme
+		%div{:class => 'container'}
+			%div{:class => 'header'}
+				%h1{:class => 'logo'}
+					%a{:href => 'demo'} Logo
+				%hr
+			%div{:class => 'body'}
+				%ul{:class => 'tabs'}
+					%li{:class => 'active'}
+						%a{:href => 'demo'} Tab 1
+					%li{:class => 'inactive'}
+						%a{:href => 'demo'} Tab 2
+				%div{:class => 'page'}
+					%h1 Heading 1
+					%h2 Heading 2
+					%h3 Heading 3
+					%h4 Heading 4
+					%h5 Heading 5
+					%h6 Heading 6
+					%hr
+					%ul{:class => 'menu'}
+						%li{:class => 'active'}
+							%a{:href => 'demo'} Menu 1
+						%li{:class => 'inactive'}
+							%a{:href => 'demo'} Menu 2
+						%li{:class => 'inactive'}
+							%a{:href => 'demo'} Menu 3
+					%hr
+					%p 
+						%a{:href => 'demo'} Lorem ipsum dolor sit amet, 
+						consectetur adipiscing elit. Duis augue risus, sollicitudin nec sollicitudin imperdiet, viverra vel tellus.
+						Morbi vehicula, nunc vel posuere vehicula, lacus nulla accumsan elit, ut convallis tortor lacus ut lacus. Suspendisse potenti.
+						Praesent et eros at sapien convallis euismod eget a purus. Vivamus sed nisl massa, vitae faucibus risus.
+						In dolor felis, blandit eget luctus vitae, vulputate a leo. Aliquam leo sem, tincidunt a pulvinar ac, ornare rutrum urna.
+						Quisque at varius quam. Maecenas molestie porta congue. Vivamus feugiat sapien sem. Nunc a felis at odio adipiscing vulputate.
+						Cras vel risus a urna vulputate elementum id id massa. Nullam eu tempor massa.
+					%pre
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis augue risus, sollicitudin nec sollicitudin imperdiet, viverra vel tellus.
+						Morbi vehicula, nunc vel posuere vehicula, lacus nulla accumsan elit, ut convallis tortor lacus ut lacus. Suspendisse potenti.
+						Praesent et eros at sapien convallis euismod eget a purus. Vivamus sed nisl massa, vitae faucibus risus.
+						In dolor felis, blandit eget luctus vitae, vulputate a leo. Aliquam leo sem, tincidunt a pulvinar ac, ornare rutrum urna.
+						Quisque at varius quam. Maecenas molestie porta congue. Vivamus feugiat sapien sem. Nunc a felis at odio adipiscing vulputate.
+						Cras vel risus a urna vulputate elementum id id massa. Nullam eu tempor massa.
+					%hr
+					%table
+						%thead
+							%tr
+								%th Header 1
+								%th Header 2
+								%th Header 3
+						%tfoot
+							%tr
+								%td{:colspan => 3} Footer
+						%tbody
+							%tr{:class => 'odd'}
+								%td Item 1
+								%td Item 2
+								%td Item 3
+							%tr{:class => 'even'}
+								%td Item 1
+								%td Item 2
+								%td Item 3
+							%tr{:class => 'odd'}
+								%td Item 1
+								%td Item 2
+								%td Item 3
+					%hr
