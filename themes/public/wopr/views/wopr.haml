@@ -12,95 +12,116 @@
 	%body
 		%div{:class => 'container'}
 			%div{:class => 'header'}
-				%h1{:class => 'logo'}
-					%a{:href => 'demo'} Logo
+				%div{:class => 'logo_container'}
+					%h1{:class => 'logo'}
+						%a{:href => 'demo'} Logo
+				%div{:class => 'slide_menu_container'}
+					%ul{:class => 'slide_menu'}
+						%li
+							%a{:href => 'demo#one'}
+								%img{:src => 'images/icon.png'}
+								One
+						%li
+							%a{:href => 'demo#two'}
+								%img{:src => 'images/icon.png'}
+								Two
 				%hr
 			%div{:class => 'body'}
-				%ul{:class => 'tabs'}
-					%li{:class => 'active'}
-						%a{:href => 'demo'} Tab 1
-					%li{:class => 'inactive'}
-						%a{:href => 'demo'} Tab 2
-				%div{:class => 'page'}
-					%h1 Heading 1
-					%h2 Heading 2
-					%h3 Heading 3
-					%h4 Heading 4
-					%h5 Heading 5
-					%h6 Heading 6
-					%hr
-					%ul{:class => 'menu'}
+				%div{:class => 'tab_container'}
+					%ul{:class => 'tabs'}
 						%li{:class => 'active'}
-							%a{:href => 'demo'} Menu 1
+							%a{:href => 'demo#tags'} Tags
 						%li{:class => 'inactive'}
-							%a{:href => 'demo'} Menu 2
+							%a{:href => 'demo#forms'} Forms
 						%li{:class => 'inactive'}
-							%a{:href => 'demo'} Menu 3
-					%hr
-					%ul{:class => 'breadcrumb'}
+							%a{:href => 'demo#ui'} UI
 						%li{:class => 'inactive'}
-							%a{:href => 'demo'} One
-						%li{:class => 'inactive'}
-							%a{:href => 'demo'} Two
-						%li{:class => 'active'}
-							%a{:href => 'demo'} Three
-					%hr
-					%p 
-						%a{:href => 'demo'} Lorem ipsum dolor sit amet, 
-						consectetur adipiscing elit. Duis augue risus, sollicitudin nec sollicitudin imperdiet, viverra vel tellus.
-						Morbi vehicula, nunc vel posuere vehicula, lacus nulla accumsan elit, ut convallis tortor lacus ut lacus. Suspendisse potenti.
-						Praesent et eros at sapien convallis euismod eget a purus. Vivamus sed nisl massa, vitae faucibus risus.
-						In dolor felis, blandit eget luctus vitae, vulputate a leo. Aliquam leo sem, tincidunt a pulvinar ac, ornare rutrum urna.
-						Quisque at varius quam. Maecenas molestie porta congue. Vivamus feugiat sapien sem. Nunc a felis at odio adipiscing vulputate.
-						Cras vel risus a urna vulputate elementum id id massa. Nullam eu tempor massa.
-					%pre
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					%ul
-						%li List 1
-						%li List 2
-					%hr
-					%table
-						%thead
-							%tr
-								%th Header 1
-								%th Header 2
-								%th Header 3
-						%tfoot
-							%tr
-								%td{:colspan => 3} Footer
-						%tbody
-							%tr{:class => 'odd'}
-								%td Item 1
-								%td Item 2
-								%td Item 3
-							%tr{:class => 'even'}
-								%td Item 1
-								%td Item 2
-								%td Item 3
-					%hr
-					%form{:action => 'demo', :method => 'get'}
-						%fieldset
-							%legend Form 1
-							%ul
-								%li
-									%label{:for => 'text'} Text
-									%input{:id => 'text', :name => 'text', :type => 'text', :value => 'Lorem Ipsum'}
-								%li
-									%label{:for => 'textarea'} Textarea
-									%textarea{:id => 'textarea', :rows => '3', :cols => '10'} Lorem Ipsum
-								%li
-									%label{:for => 'select'} Select
-									%select{:id => 'select', :name => 'select'}
-										%optgroup{:label => 'Option Group'}
-											%option{:value => 'option1'} Option 1
-								%li
-									%label{:for => 'radio1'} Radio 1
-									%input{:id => 'radio1', :name => 'radio', :type => 'radio', :value => 'radio'}
-									%label{:for => 'radio2'} Radio 2
-									%input{:id => 'radio2', :name => 'radio', :type => 'radio', :value => 'radio'}
-								%li
-									%label{:for => 'checkbox'} Checkbox
-									%input{:id => 'checkbox', :name => 'checkbox', :type => 'checkbox', :value => 'checkbox'}
-								%li
-									%input{:id => 'submit', :name => 'submit', :type => 'submit'}
-					%hr
+							%a{:href => 'demo#jqueryui'} JQuery UI
+				%div{:class => 'page_container'}
+					%div{:id => 'tags', :class => 'page'}
+						%h1 Heading 1
+						%h2 Heading 2
+						%h3 Heading 3
+						%h4 Heading 4
+						%h5 Heading 5
+						%h6 Heading 6
+						%hr
+						%ul{:class => 'button_menu'}
+							%li{:class => 'active'}
+								%a{:href => 'demo'} Menu 1
+							%li{:class => 'inactive'}
+								%a{:href => 'demo'} Menu 2
+							%li{:class => 'inactive'}
+								%a{:href => 'demo'} Menu 3
+						%hr
+						%ul{:class => 'breadcrumb'}
+							%li{:class => 'inactive'}
+								%a{:href => 'demo'} One
+							%li{:class => 'inactive'}
+								%a{:href => 'demo'} Two
+							%li{:class => 'active'}
+								%a{:href => 'demo'} Three
+						%hr
+						%p 
+							%a{:href => 'demo'} Lorem ipsum dolor sit amet, 
+							consectetur adipiscing elit. Duis augue risus, sollicitudin nec sollicitudin imperdiet, viverra vel tellus.
+							Morbi vehicula, nunc vel posuere vehicula, lacus nulla accumsan elit, ut convallis tortor lacus ut lacus. Suspendisse potenti.
+							Praesent et eros at sapien convallis euismod eget a purus. Vivamus sed nisl massa, vitae faucibus risus.
+							In dolor felis, blandit eget luctus vitae, vulputate a leo. Aliquam leo sem, tincidunt a pulvinar ac, ornare rutrum urna.
+							Quisque at varius quam. Maecenas molestie porta congue. Vivamus feugiat sapien sem. Nunc a felis at odio adipiscing vulputate.
+							Cras vel risus a urna vulputate elementum id id massa. Nullam eu tempor massa.
+						%pre
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						%ul
+							%li List 1
+							%li List 2
+						%hr
+						%table
+							%thead
+								%tr
+									%th Header 1
+									%th Header 2
+									%th Header 3
+							%tfoot
+								%tr
+									%td{:colspan => 3} Footer
+							%tbody
+								%tr{:class => 'odd'}
+									%td Item 1
+									%td Item 2
+									%td Item 3
+								%tr{:class => 'even'}
+									%td Item 1
+									%td Item 2
+									%td Item 3
+						%hr
+					%div{:id => 'forms', :class => 'page'}
+						%hr
+						%form{:action => 'demo', :method => 'get'}
+							%fieldset
+								%legend Form 1
+								%ul
+									%li
+										%label{:for => 'text'} Text
+										%input{:id => 'text', :name => 'text', :type => 'text', :value => 'Lorem Ipsum'}
+									%li
+										%label{:for => 'textarea'} Textarea
+										%textarea{:id => 'textarea', :rows => '3', :cols => '10'} Lorem Ipsum
+									%li
+										%label{:for => 'select'} Select
+										%select{:id => 'select', :name => 'select'}
+											%optgroup{:label => 'Option Group'}
+												%option{:value => 'option1'} Option 1
+									%li
+										%label{:for => 'radio1'} Radio 1
+										%input{:id => 'radio1', :name => 'radio', :type => 'radio', :value => 'radio'}
+										%label{:for => 'radio2'} Radio 2
+										%input{:id => 'radio2', :name => 'radio', :type => 'radio', :value => 'radio'}
+									%li
+										%label{:for => 'checkbox'} Checkbox
+										%input{:id => 'checkbox', :name => 'checkbox', :type => 'checkbox', :value => 'checkbox'}
+									%li
+										%input{:id => 'submit', :name => 'submit', :type => 'submit'}
+						%hr
+					%div{:id => 'ui', :class => 'page'}
+					%div{:id => 'jqueryui', :class => 'page'}
