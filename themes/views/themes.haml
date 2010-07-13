@@ -9,6 +9,7 @@
 		%link{:rel => 'icon', :type => 'image/png', :href => 'images/icon.png'}
 		%link{:rel => 'stylesheet', :href => 'default/css', :title => 'Themes', :type => 'text/css'}
 		%script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'}
+		%script{:type => 'text/javascript', :src => 'js/ui.js'}
 		%script{:type => 'text/javascript', :src => 'js/themes.js'}
 		:javascript
 			/* Initiate the application javascript and run */
@@ -21,29 +22,31 @@
 	%body
 		%div{:class => 'container'}
 			%div{:class => 'body'}
-				%ul{:class => 'tabs'}
-					%li{:class => 'active'}
-						%a{:href => '/themes/'}Themes
-				%div{:class => 'page'}
-					%h1 Themes
-					%hr
-					%form{:action => '#', :method => 'post'}
-						%table
-							%thead
-								%tr
-									%th Title
-									%th Description
-									%th Default
-							%tfoot
-								%tr
-									%td{:colspan => 4}
-										%span{:class => 'loading'} Loading...
-										%input{:name => 'save', :type => 'submit', :value => 'Save'}
-							%tbody
-								%tr
-									%td{:class => 'title'}
-										%a{:href => '#'} Title
-									%td{:class => 'description'}
-									%td{:class => 'default'}
-										%input{:name => 'default', :type => 'radio', :value => ''}
-					%hr
+				%div{:class => 'tab_container'}
+					%ul{:class => 'tab_menu'}
+						%li{:class => 'active'}
+							%a{:href => '/themes/'}Themes
+				%div{:class => 'page_container'}
+					%div{:class => 'page'}
+						%h1 Themes
+						%hr
+						%form{:action => '#', :method => 'post'}
+							%table
+								%thead
+									%tr
+										%th Title
+										%th Description
+										%th Default
+								%tfoot
+									%tr
+										%td{:colspan => 4}
+											%span{:class => 'loading'} Loading...
+											%input{:name => 'save', :type => 'submit', :value => 'Save'}
+								%tbody
+									%tr
+										%td{:class => 'title'}
+											%a{:href => '#'} Title
+										%td{:class => 'description'}
+										%td{:class => 'default'}
+											%input{:name => 'default', :type => 'radio', :value => ''}
+						%hr

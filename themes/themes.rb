@@ -40,12 +40,11 @@ end
 
 # Theme demos
 get '/:theme/demo' do
-	unless params[:theme] == 'default'
-		haml :"#{params[:theme]}", {:views => File.join(Sinatra::Application.root, "public/#{params[:theme]}/views")}
-	else
+	if params[:theme] == 'default'
 		default = JSON.parse(IO.readlines(File.join(Sinatra::Application.root, 'data/default.json'), 'r').to_s)
-		haml :"#{default['theme']}", {:views => File.join(Sinatra::Application.root, "public/#{default['theme']}/views")}
+		params[:theme] = default['theme']
 	end
+	haml :demo
 end
 
 # Theme stylesheets

@@ -1,14 +1,24 @@
 !!! Strict
 %html{:xmlns => 'http://www.w3.org/1999/xhtml', :lang => 'en'}
 	%head
-		%base{:href=>'/themes/wopr/'}
+		%base{:href => "/themes/#{params[:theme]}/"}
 		%meta{:"http-equiv" => 'Content-Type', :content => 'text/html; charset=utf-8'}
 		%meta{:"http-equiv" => 'Content-Script-Type', :content => 'text/javascript'}
 		%meta{:name => 'description', :content => 'Themes'}
 		%link{:rel => 'shortcut icon', :type => 'image/png', :href => 'images/icon.png'}
 		%link{:rel => 'icon', :type => 'image/png', :href => 'images/icon.png'}
 		%link{:rel => 'stylesheet', :href => 'css', :title => 'Themes', :type => 'text/css'}
-		%title W.O.P.R.
+		%script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'}
+		%script{:type => 'text/javascript', :src => '/themes/js/ui.js'}
+		%script{:type => 'text/javascript', :src => '/themes/js/demo.js'}
+		:javascript
+			/* Initiate the application javascript and run */
+			$(document).ready(function(){
+			
+				demo.run();
+			
+			});
+		%title Themes | Demo
 	%body
 		%div{:class => 'container'}
 			%div{:class => 'header'}
@@ -28,15 +38,13 @@
 				%hr
 			%div{:class => 'body'}
 				%div{:class => 'tab_container'}
-					%ul{:class => 'tabs'}
+					%ul{:class => 'tab_menu'}
 						%li{:class => 'active'}
 							%a{:href => 'demo#tags'} Tags
 						%li{:class => 'inactive'}
 							%a{:href => 'demo#forms'} Forms
 						%li{:class => 'inactive'}
 							%a{:href => 'demo#ui'} UI
-						%li{:class => 'inactive'}
-							%a{:href => 'demo#jqueryui'} JQuery UI
 				%div{:class => 'page_container'}
 					%div{:id => 'tags', :class => 'page'}
 						%h1 Heading 1
@@ -124,4 +132,3 @@
 										%input{:id => 'submit', :name => 'submit', :type => 'submit'}
 						%hr
 					%div{:id => 'ui', :class => 'page'}
-					%div{:id => 'jqueryui', :class => 'page'}
