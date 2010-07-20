@@ -21,7 +21,7 @@
 	$cycle->route('/example','example');
 		function example($cycle) {
 			$server = new Zend_Json_Server();
-			$server->setClass('WOPR_Example');
+			$server->setClass('WOPR_Test_Example');
 			return $cycle->send($server->handle(), Cycle_Response::JSON);
 		}
 	
